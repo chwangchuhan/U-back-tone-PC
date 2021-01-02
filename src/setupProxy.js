@@ -6,8 +6,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 module.exports = function(app) {
   app.use(
     createProxyMiddleware('/api', {
-      // target: 'http://localhost:8080',
-      target: 'http://mozi-page-builder.mozi.k2.test.wacai.info/mozi/question',
+      target: 'http://localhost:8080',
+      // target: 'http://mozi-page-builder.mozi.k2.test.wacai.info/mozi/question',
       changeOrigin: true,
       logLevel: 'debug',
       pathRewrite: {
