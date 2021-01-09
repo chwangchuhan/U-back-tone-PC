@@ -5,6 +5,7 @@ import { connect, router } from 'dva';
 import { Layout, Spin, Form, Steps, Button, Result, Input, Upload, Space } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import SelectFreedom from './container/select-freedom'
+import SelectCandidate from './container/select-candidate'
 
 import './index.less';
 const { Link } = router;
@@ -34,6 +35,10 @@ const layout   = {
   isLoadingMeals: loading.effects['order/getOrderGoodsMeals'],
 }))
 export default class Order extends Component {
+  state = {
+    // 自由选中的商品
+    freeSelectsGoods: [],
+  }
 
   init = () => {
     const { dispatch } = this.props;
@@ -77,6 +82,14 @@ export default class Order extends Component {
   //   });
   // }
 
+  // 自由选择商品选择成功
+  handleSubmitFreedom = selectGoods => {
+    this.setState({
+      freeSelectsGoods: selectGoods,
+    })
+    this.handleSetStep(4)
+  }
+
   componentWillMount() {
     this.init()
   }
@@ -116,7 +129,7 @@ export default class Order extends Component {
 
           {/* 自由选择项目 */}
           {step === 2 && (
-            <SelectFreedom />
+            <SelectFreedom onSubmit={this.handleSubmitFreedom}/>
           )}
 
           {/* 选择套餐项目 */}
@@ -124,10 +137,20 @@ export default class Order extends Component {
             <div className="select-type" onClick={this.handleGoGoods}>
               {goodsMeals.map(item => {
                 return (
-                  <TipButton key={item.id} onClick={() => { this.handleSetMeal(item) }}>{item.label}</TipButton>
+                  <TipButton
+                    key={item.id}
+                    onClick={() => { this.handleSetMeal(item) }}
+                  >
+                    {item.label}
+                  </TipButton>
                 )
               })}
             </div>
+          )}
+
+          {/* 候选人基础信息 */}
+          {step === 4 && (
+            <SelectCandidate onSubmit={this.handleSubmitFreedom}/>
           )}
         </Spin>
       </div>

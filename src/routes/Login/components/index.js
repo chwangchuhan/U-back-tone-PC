@@ -32,8 +32,7 @@ export default class Login extends Component {
             <Form onFinish={this.handleSubmit} className="login-form" initialValues={{ userName: 'admin', password: 'admin', remember: true }}>
               <div className="user-img">
                 <img src={logoImg} alt="logo" />
-                <b>LANIF</b>
-                <span>Admin</span>
+                <b>背调</b>
               </div>
               <FormItem name="userName" rules={[{ required: true, message: '请输入您的用户名，示例admin' }]}>
                 <Input

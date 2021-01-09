@@ -287,8 +287,7 @@ class LeftSideBar extends PureComponent {
         <div className="navbar-branding">
           <div className="navbar-brand">
             <img src={logoImg} alt="logo" />
-            <b>LANIF</b>
-            Admin
+            <b>背调</b>
           </div>
           <span className="toggle_sidemenu_l" onClick={onCollapse}>
             <Icon type="lines" />

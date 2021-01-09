@@ -1,5 +1,7 @@
 @import "~antd/lib/style/themes/default.less";
 @import "./searchbox.less";
+
+
 // navbar
 .navbar {
   z-index: 1030;
@@ -51,12 +53,17 @@
       display: inline-block;
       overflow: hidden;
       width: 170px;
+      .nav-bar-title-wrap {
+        display: flex;
+        align-items: center;
+      }
       b {
         font-weight: bold;
         padding-right: 1px;
+        font-size: 24px;
       }
       img {
-        width: 35px;
+        width: 24px;
         height: auto;
         margin-right: 10px;
       }

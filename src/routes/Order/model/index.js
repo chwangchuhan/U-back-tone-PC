@@ -6,7 +6,7 @@ export default {
   namespace: 'order',
 
   state: {
-    step: -1,         // 当前所处阶段 0 选择订单方式，1 订单自选 2 订单预选 
+    step: -1,         // 当前所处阶段 0 选择订单方式，1 订单自选 2 订单预选  3选择套餐项目 4 候选人基础信息
     goods: [],        // 订单商品
     goodsMeals: [],   // 获取订单商品套餐
     businessInfo: {}, // 公司信息
@@ -66,7 +66,7 @@ export default {
     setBusinessInfo(state, { payload }) {
       return {
         ...state,
-        step: 2,
+        step: 4,
         businessInfo: payload,
       }
     },

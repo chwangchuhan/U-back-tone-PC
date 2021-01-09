@@ -87,9 +87,10 @@ class NavBar extends PureComponent {
       <header className={classnames}>
         <div className="navbar-branding">
           <Link className="navbar-brand" to="/">
-            <img src={logoImg} alt="logo" />
-            <b>LANIF</b>
-            Admin
+            <div className="nav-bar-title-wrap">
+              <img src={logoImg} alt="logo" />
+              <b>背调</b>
+            </div>
           </Link>
           <span className="toggle_sidemenu_l" onClick={onCollapseLeftSide}>
             <Icon type="lines" />
