@@ -41,14 +41,59 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
     '/api/user/register': options => toSuccess(),
     '/api/user/menu': options => toSuccess([
       {
+        name: '任务管理',
+        icon: 'UserOutlined',
+        path: '/task-manager',
+        children: [
+          {
+            name: '下单',
+            path: '/task-manager/order',
+          },
+          {
+            name: '订单',
+            path: '/order-history',
+          }
+        ],
+      },
+      {
+        name: '报告管理',
+        icon: 'SearchOutlined',
+        path: '/report-manager',
+      },
+      {
+        name: '账单管理',
+        icon: 'MoneyCollectOutlined',
+        path: '/bill-manager',
+        children: [
+          {
+            name: '下单',
+            path: '/order',
+          },
+          {
+            name: '订单',
+            path: '/order-history',
+          }
+        ],
+      },
+      {
+        name: '账号设置',
+        icon: 'SettingOutlined',
+        path: '/account-setting',
+        children: [
+          {
+            name: '下单',
+            path: '/order',
+          },
+          {
+            name: '订单',
+            path: '/order-history',
+          }
+        ],
+      },
+      {
         name: '仪表盘',
         icon: 'DashboardOutlined',
         path: '/dashboard',
-      },
-      {
-        name: '下单',
-        icon: 'DashboardOutlined',
-        path: '/order',
       },
       {
         name: '组件',

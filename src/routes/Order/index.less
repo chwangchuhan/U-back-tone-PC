@@ -1,0 +1,229 @@
+@import "~antd/lib/style/themes/default.less";
+
+.order-wrap {
+  background-color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  user-select: none;
+
+  // tip按钮
+  .tip-button {
+    width: 370px;
+    height: 70px;
+    margin: 70px auto;
+    background: #00a0e9;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      transform: rotate(45deg);
+      margin-right: 30px;
+      margin-left: -30px;
+    }
+  }
+
+  .business-wrap {
+    width: 100%;
+    margin: auto;
+    box-shadow: 1px 1px 15px rgba(0,0,0,0.2);
+    border-radius: 26px;
+    display: flex;
+    align-items: center;
+    height: 90px;
+    padding: 0 44px;
+    cursor: pointer;
+    .add-icon-wrap {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #d3d3d3;
+      border-radius: 100%;
+      background: #fbfbfc;
+      color: #d3d3d3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .business-info-wrap {
+      flex: 1;
+      flex-shrink: 1;
+      color: #00a0e9;
+
+      .business-name {
+        font-size: 18px;
+      }
+
+      .business-id {
+        font-size: 14px;
+      }
+    }
+    
+  }
+
+  .goods-card-wrap {
+    width: 174px;
+    height: 68px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 40px;
+    display: inline-block;
+
+    .goods-card-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .goods-header-wrap {
+      height: 42px;
+      .goods-icon-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        img {
+          width: 74px;
+          height: 29px;
+        }
+      }
+    }
+    .goods-title {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00a0e9;
+      font-weight: 600;
+    }
+
+    .goods-price {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 72px;
+      color: red;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .goods-btn {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      color: #333;
+      border: 1px solid #333;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    /* 选中状态 */
+    &.is-selected {
+      background: #00a0e9;
+
+      .goods-title {
+        color: #fff;
+      }
+
+      .goods-btn {
+        color: #fff;
+        border: 1px solid #fff;
+      }
+    }
+
+  }
+    
+  // 自由选择商品
+  .select-freedom-wrap {
+    .goods-group-wrap {
+      margin-bottom: 10px;
+    }
+
+    .price-result-wrap {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      .compose-price-wrap {
+        margin-right: 60px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+
+        .compose-price {
+          color: #00a0e9;
+          font-size: 30px;
+          margin-left: 8px;
+        }
+      }
+
+      .real-price-wrap {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+
+        .real-price {
+          color: #fe7750;
+          font-size: 30px;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  // 提交按钮
+  .btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    .btn-submit-freedom {
+      padding: 12px 26px;
+      text-align: center;
+      color: #fff;
+      background-color: #00a0e9;
+      display: inline-block;
+      border-radius: 26px;
+      box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+  }
+  
+}
+
+/* 商品弹窗 */
+.goods-card-modal {
+  .ant-modal-content {
+    border-radius: 14px;
+  }
+  .goods-card-modal-content-wrap {
+    .goods-card-modal-title {
+      font-size: 16px;
+      color: #00a0e9;
+      font-weight: 600;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
+}

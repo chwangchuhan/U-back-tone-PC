@@ -28,6 +28,13 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       return toSuccess(mock({
         'step': 0,  // 0 未认证  1 审核中  2 审核完成
       }), 200);
-    }
+    },
+    'GET /api/business/info': () => {
+      return toSuccess(mock({
+        businessName: '挖财网络有限公司',
+        id: 588123890,
+        businessCode: 'AADASDJKLJKL123AWSD',
+      }), 500);
+    },
   }
 }
