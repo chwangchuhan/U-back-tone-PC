@@ -107,33 +107,40 @@ export default class SelectFreedom extends Component {
             ))}
           </div>
           
-          {/* 价格计算 */}
-          <div className="price-result-wrap">
-            <div className="compose-price-wrap">
-              <div className="price-title">
-                组合价格
-              </div>
-              <div className="compose-price">
-                ￥{composePrice.toFixed(2)}
-              </div>
-            </div>
+          
+          {!!this.state.selectGoodsList.length && (
+            <>
+              {/* 价格计算 */}
+              <div className="price-result-wrap">
+                <div className="compose-price-wrap">
+                  <div className="price-title">
+                    组合价格
+                  </div>
+                  <div className="compose-price">
+                    ￥{composePrice.toFixed(2)}
+                  </div>
+                </div>
 
-            <div className="real-price-wrap">
-              <div className="price-title">
-                优惠价格
+                <div className="real-price-wrap">
+                  <div className="price-title">
+                    优惠价格
+                  </div>
+                  <div className="real-price">
+                    ￥{realPrice.toFixed(2)}
+                  </div>
+                </div>
               </div>
-              <div className="real-price">
-                ￥{realPrice.toFixed(2)}
-              </div>
-            </div>
-          </div>
 
-          {/* 提交按钮 */}
-          <div className="btn-wrap">
-            <div className="btn-submit-freedom" onClick={this.handleSubmit}>
-              确认提交
-            </div>
-          </div>
+               {/* 提交按钮 */}
+              <div className="btn-wrap">
+                <div className="btn-submit-freedom" onClick={this.handleSubmit}>
+                  确认提交
+                </div>
+              </div>
+            </>
+          )}
+
+         
         </Spin>
       </div>
     )

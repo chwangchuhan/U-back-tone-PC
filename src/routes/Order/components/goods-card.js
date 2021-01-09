@@ -27,6 +27,7 @@ export default class GoodCards extends Component {
       title: null,
       icon: null,
       className: 'goods-card-modal',
+      maskClosable: true,
       content: (
         <div className="goods-card-modal-content-wrap">
           <div className="goods-card-modal-title">{this.props.title}</div>
