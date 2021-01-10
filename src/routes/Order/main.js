@@ -38,6 +38,7 @@ export default class Order extends Component {
   state = {
     // 自由选中的商品
     freeSelectsGoods: [],
+    candidateList: [],
   }
 
   init = () => {
@@ -88,6 +89,13 @@ export default class Order extends Component {
       freeSelectsGoods: selectGoods,
     })
     this.handleSetStep(4)
+  }
+
+  handleSubmitCandidate = candidateList => {
+    this.setState({
+      candidateList,
+    })
+    this.handleSetStep(5)
   }
 
   componentWillMount() {
@@ -150,7 +158,12 @@ export default class Order extends Component {
 
           {/* 候选人基础信息 */}
           {step === 4 && (
-            <SelectCandidate onSubmit={this.handleSubmitFreedom}/>
+            <SelectCandidate onSubmit={this.handleSubmitCandidate}/>
+          )}
+
+          {/* 候选人模板预览列表 */}
+          {step === 5 && (
+            <div>候选人模板</div>
           )}
         </Spin>
       </div>

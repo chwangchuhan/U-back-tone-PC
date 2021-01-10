@@ -8,6 +8,7 @@ import { normal } from 'components/Notification';
 import _ from 'lodash'
 
 import CandidateCard from '../components/candidate-card'
+import ModalAddCandidate from '../components/candidate-add-modal'
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -28,29 +29,43 @@ export default class SelectCandidate extends Component {
     candidateUsers: [{ name: '帅猫', phone: 17826855166, gender: '男', email: 'chwangchuhan@163.com' }],
   }
 
-  handleSelectGoods(goods) {
-    const { selectGoodsList } = this.state
-
-    // 找到选中项则移除
-    if (_.findIndex(selectGoodsList, goods) !== -1) {
-      _.remove(selectGoodsList, item => item.id === goods.id)
-    } else {
-      // 未找到则push
-      selectGoodsList.push(goods)
-    }
-
-    this.setState({
-      selectGoodsList,
-    })
+  handleSubmit = () => {
+    this.props.onSubmit(this.state.candidateUsers)
   }
 
-  handleSubmit = () => {
-    if (!this.state.selectGoodsList.length) {
-      normal.warning('请先选择需要的背调选项')
-      return
+  handleAddCandidateUser = data => {
+    const { candidateUsers } = this.state
+    const nameList = candidateUsers.map(user => user.name)
+
+    if (nameList.includes(data.name)) {
+      normal.warning('已存在该候选人，请重新提交')
+      return false
     }
-    normal.success('选择成功')
-    this.props.onSubmit(this.state.selectGoodsList)
+
+    candidateUsers.push(data)
+    this.setState({ candidateUsers })
+    normal.success('添加成功')
+    return true
+  }
+
+  // 预览背调模板
+  handlePreview = user => {
+    console.log(user)
+    alert('预览啦')
+  }
+
+  // 删除候选人
+  handleDelete = user => {
+    const { candidateUsers } = this.state
+
+    // 找到选中项则移除
+    if (_.findIndex(candidateUsers, user) !== -1) {
+      _.remove(candidateUsers, item => item.name === user.name)
+      this.setState({
+        candidateUsers,
+      })
+      normal.success('删除成功')
+    }
   }
 
   render () {
@@ -59,17 +74,28 @@ export default class SelectCandidate extends Component {
     return (
       <div className="select-candidate-wrap">
         {candidateUsers.map(user => {
-          return <CandidateCard data={user} />
+          return <CandidateCard data={user} onPreview={() => {this.handlePreview(user)}} onDelete={() => {this.handleDelete(user)}} />
         })}
 
-        <div className="btn-add-candidate-user">
-          <div className="add-user-content">
-            <div className="add-icon">
-              <PlusOutlined />
+        <ModalAddCandidate onSubmit={this.handleAddCandidateUser}>
+          <div className="btn-add-candidate-user">
+            <div className="add-user-content">
+              <div className="add-icon">
+                <PlusOutlined />
+              </div>
+              <div className="add-user-label">添加候选人</div>
             </div>
-            <div className="add-user-label">添加候选人</div>
+          </div> 
+        </ModalAddCandidate>
+
+        {/* 提交按钮 */}
+        {!!candidateUsers.length && (
+          <div className="btn-wrap">
+            <div className="btn-submit" onClick={this.handleSubmit}>
+              确认提交
+            </div>
           </div>
-        </div>
+        )}
       </div>
     )
   }

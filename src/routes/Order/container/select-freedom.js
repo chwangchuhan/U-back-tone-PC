@@ -131,7 +131,7 @@ export default class SelectFreedom extends Component {
                 </div>
               </div>
 
-               {/* 提交按钮 */}
+              {/* 提交按钮 */}
               <div className="btn-wrap">
                 <div className="btn-submit-freedom" onClick={this.handleSubmit}>
                   确认提交

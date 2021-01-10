@@ -5,8 +5,10 @@
   width: 100%;
   min-height: 100vh;
   padding: 20px;
-  user-select: none;
 
+  div[class|='btn'] {
+    user-select: none;
+  }
   div[class|='btn']:hover {
     transform: translateY(-2px);
     transition: transform 0.5s;
@@ -203,7 +205,7 @@
     align-items: center;
     justify-content: center;
     margin: 20px 0;
-    .btn-submit-freedom {
+    [class|='btn-submit'] {
       padding: 12px 26px;
       text-align: center;
       color: #fff;
@@ -223,9 +225,9 @@
       display: inline-block;
       border-radius: 16px;
       box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-      margin-left: 15px;
       overflow: hidden;
       cursor: pointer;
+      vertical-align: top;
 
       .add-user-content {
         display: flex;
@@ -280,6 +282,8 @@
   border-radius: 16px;
   box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
   overflow: hidden;
+  margin-right: 15px;
+  margin-bottom: 8px;
 
   .candidate-title-wrap {
     height: 80px;

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
-import classnames from 'classnames';
-import { Modal } from 'antd'
 
 const infoMap = {
   name: '姓名',
@@ -19,13 +17,11 @@ export default class CandidateCards extends Component {
       gender: T.string,
       email: T.string,
     }).isRequired,
-    onReview: T.func.isRequired,
+    onPreview: T.func.isRequired,
     onDelete: T.func.isRequired,
   }
 
-  static defaultProps = {
-    isSelected: false,
-  }
+  static defaultProps = {}
   render () {
     return (
       <div className="candidate-card-wrap">
@@ -48,8 +44,8 @@ export default class CandidateCards extends Component {
           })}
         </div>
         <div className="operation-wrap">
-          <div className="btn-review-template">预览背调模板</div>
-          <div className="btn-delete">删除候选人</div>
+          <div className="btn-review-template" onClick={this.props.onPreview}>预览背调模板</div>
+          <div className="btn-delete" onClick={this.props.onDelete}>删除候选人</div>
         </div>
       </div>
     )
