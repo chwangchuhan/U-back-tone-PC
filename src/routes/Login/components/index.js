@@ -66,8 +66,6 @@ export default class Login extends Component {
               {/* <Link className="login-form-forgot" to="#">
                 忘记密码
               </Link> */}
-             
-              
             </Form>
           </Spin>
         </Content>

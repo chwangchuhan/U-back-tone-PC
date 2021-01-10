@@ -352,6 +352,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
         ]
       }), 200);
     },
+
     // 获取订单商品套餐
     'GET /api/order/goods/meal': (options) => {
       return toSuccess(mock({
@@ -386,6 +387,16 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
           },
         ]
       }), 200);
+    },
+
+    // 提交订单
+    // 存在freeSelectsGoods表示是自选商品提交
+    // 不存在freeSelectsGoods则表示是套餐提交
+    '/api/order/submit': (options) => {
+      return toSuccess(mock({
+        data: 0,
+        message: '提交成功',
+      }), 500);
     },
   }
 }

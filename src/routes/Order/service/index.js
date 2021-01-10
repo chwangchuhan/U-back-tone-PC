@@ -14,3 +14,8 @@ export async function getOrderGoodsList() {
 export async function getOrderGoodsMeal() {
   return $$.get('/order/goods/meal');
 }
+
+// 提交订单
+export async function submitOrder() {
+  return $$.post('/order/submit');
+}

@@ -1,5 +1,5 @@
 // import { routerRedux } from 'dva';
-import { getBusinessInfo, getOrderGoodsList, getOrderGoodsMeal } from '../service';
+import { getBusinessInfo, getOrderGoodsList, getOrderGoodsMeal, submitOrder } from '../service';
 // import $$ from 'cmn-utils';
 
 export default {
@@ -15,7 +15,7 @@ export default {
      * 3 选择套餐项目
      * 4 候选人基础信息
      * 5 候选人模板预览列表
-     * 6 邀请链接发送
+     * 6 订单提交成功
      */
     step: -1,         
     goods: [],        // 订单商品
@@ -54,6 +54,11 @@ export default {
         payload: res.data,
       });
     },
+
+    *submitOrder({ payload }, { call, put }) {
+      const res = yield submitOrder(payload);
+      return res
+    },
   },
 
   reducers: {
@@ -77,7 +82,7 @@ export default {
     setBusinessInfo(state, { payload }) {
       return {
         ...state,
-        step: 4,
+        step: 0,
         businessInfo: payload,
       }
     },

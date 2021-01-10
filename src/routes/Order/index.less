@@ -200,12 +200,12 @@
   }
 
   // 提交按钮
-  .btn-wrap {
+  .operation-wrap {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px 0;
-    [class|='btn-submit'] {
+    [class|='btn'] {
       padding: 12px 26px;
       text-align: center;
       color: #fff;
@@ -256,6 +256,49 @@
       }
     }
   }
+
+  // 候选人预览列表
+  .preview-candidate-list-wrap {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .preview-candidate-list {
+      flex: 1;
+      width: 100%;
+
+      .preview-candidate-item {
+        width: 100%;
+        border-radius: 20px;
+        background-color: #00a0e9;
+        color: #fff;
+        text-align: center;
+        height: 80px;
+        font-size: 18px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+    }
+
+    .operation-wrap {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+
+      .btn-go-add {
+        color: #00a0e9;
+        background-color: #fff;
+        border: 1px solid #00a0e9;
+      }
+    }
+  }
 }
 
 /* 商品弹窗 */
@@ -270,6 +313,19 @@
       font-weight: 600;
       text-align: center;
       padding-bottom: 20px;
+    }
+  }
+}
+
+// 确认提交订单弹窗
+.order-commit-modal {
+  .order-commit-wrap {
+    .order-commit-url-wrap {
+      margin-bottom: 20px;
+    }
+
+    .desc-item {
+      margin-bottom: 10px;
     }
   }
 }

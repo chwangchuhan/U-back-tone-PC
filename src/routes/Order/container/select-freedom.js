@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
-import classnames from 'classnames';
 import { connect } from 'dva';
 import { Spin, Typography } from 'antd'
 import { normal } from 'components/Notification';
@@ -8,7 +7,7 @@ import _ from 'lodash'
 
 import GoodCard from '../components/goods-card'
 
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph } = Typography;
 
 /**
  * 自由选择容器
@@ -132,7 +131,7 @@ export default class SelectFreedom extends Component {
               </div>
 
               {/* 提交按钮 */}
-              <div className="btn-wrap">
+              <div className="operation-wrap">
                 <div className="btn-submit-freedom" onClick={this.handleSubmit}>
                   确认提交
                 </div>

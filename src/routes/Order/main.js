@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import T from 'prop-types'
 import { connect, router } from 'dva';
 // import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Layout, Spin, Form, Steps, Button, Result, Input, Upload, Space } from 'antd';
+import { Result, Button, Spin, Modal, Typography, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import SelectFreedom from './container/select-freedom'
 import SelectCandidate from './container/select-candidate'
+import PreviewCandidateList from './container/preview-candidate-list'
 
 import './index.less';
-const { Link } = router;
-const { Content } = Layout;
-const FormItem = Form.Item;
 
-const { Step } = Steps;
+const { Link } = router
 
 class TipButton extends Component {
   static propTypes = {
@@ -25,10 +23,6 @@ class TipButton extends Component {
   }
 }
 
-const layout   = {
-  labelCol: { span: 4 },
-  wrapperCol: { span: 16 },
-};
 @connect(({ order, loading }) => ({
   order,
   isLoadingBusinessInfo: loading.effects['order/getBusinessInfo'],
@@ -38,7 +32,7 @@ export default class Order extends Component {
   state = {
     // 自由选中的商品
     freeSelectsGoods: [],
-    candidateList: [],
+    candidateList: [{ name: '帅猫', phone: 17826855166, gender: '男', email: 'chwangchuhan@163.com' }],
   }
 
   init = () => {
@@ -73,16 +67,6 @@ export default class Order extends Component {
     })
   }
 
-  // handleSubmit = form => {
-  //   console.log(form)
-  //   const { dispatch } = this.props;
-    
-  //   dispatch({
-  //     type: 'verify/uoloadVerify',
-  //     payload: {}
-  //   });
-  // }
-
   // 自由选择商品选择成功
   handleSubmitFreedom = selectGoods => {
     this.setState({
@@ -91,11 +75,57 @@ export default class Order extends Component {
     this.handleSetStep(4)
   }
 
+  // 提交候选人
   handleSubmitCandidate = candidateList => {
     this.setState({
       candidateList,
     })
     this.handleSetStep(5)
+  }
+
+  // 提交订单
+  handleSubmitOrder = () => {
+    Modal.confirm({
+      title: '确认生成订单？',
+      className: 'order-commit-modal',
+      content: (
+        <div class="order-commit-wrap">
+          <div className="order-commit-url-wrap">
+            http://modao.cc/app/sdfsdlkfhjkhwerjkh12478612
+          </div>
+          <div className="desc-item">
+            上述在线授权链接将以邮件、短信的方式发送给
+            <Typography.Text type="danger">[{this.state.candidateList.map(item => item.name).join('、')}]</Typography.Text>
+          </div>
+          <div className="desc-item">
+            请仔细确认后提交
+          </div>
+        </div>
+      ),
+      onOk: async () => {
+        const { freeSelectsGoods, candidateList } = this.state
+        const payload = { candidateList }
+
+        if (freeSelectsGoods.length) {
+          payload.freeSelectsGoods = freeSelectsGoods
+        }
+
+        message.loading({
+          content: '提交中',
+          key: 'global'
+        })
+        
+        await this.props.dispatch({
+          type: 'order/submitOrder',
+          payload,
+        })
+        message.success({
+          content: '提交成功',
+          key: 'global'
+        })
+        this.handleSetStep(6)
+      },
+    })
   }
 
   componentWillMount() {
@@ -158,13 +188,31 @@ export default class Order extends Component {
 
           {/* 候选人基础信息 */}
           {step === 4 && (
-            <SelectCandidate onSubmit={this.handleSubmitCandidate}/>
+            <SelectCandidate candidateUsers={this.state.candidateList} onSubmit={this.handleSubmitCandidate}/>
           )}
 
           {/* 候选人模板预览列表 */}
           {step === 5 && (
-            <div>候选人模板</div>
+             <PreviewCandidateList
+              candidateUsers={this.state.candidateList}
+              onGoAdd={() => { this.handleSetStep(4) }}
+              onSubmit={this.handleSubmitOrder}
+            />
           )}
+
+           {/* 提交成功 */}
+           {step === 6 && (
+              <Result
+                status="success"
+                title="订单提交成功"
+                subTitle={`邮件已发送给候选人：${this.state.candidateList.map(item => item.name).join('、')}`}
+                extra={[
+                  <Button type="primary" key="console">
+                    <Link to="/sign/register">立即查看订单</Link>
+                  </Button>,
+                ]}
+              />
+            )}
         </Spin>
       </div>
     );

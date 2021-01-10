@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
-import classnames from 'classnames';
 import { connect } from 'dva';
-import { Spin, Typography } from 'antd'
 import { PlusOutlined } from '@ant-design/icons';
 import { normal } from 'components/Notification';
 import _ from 'lodash'
 
 import CandidateCard from '../components/candidate-card'
 import ModalAddCandidate from '../components/candidate-add-modal'
-
-const { Title, Paragraph, Text, Link } = Typography;
 
 /**
  * 选择候选人
@@ -20,13 +16,16 @@ const { Title, Paragraph, Text, Link } = Typography;
 }))
 export default class SelectCandidate extends Component {
   static propTypes = {
+    candidateUsers: T.array.isRequired,
     onSubmit: T.func.isRequired, // 提交候选人 
   }
 
-  static defaultProps = {}
+  static defaultProps = {
+    candidateUsers: [],
+  }
 
   state = {
-    candidateUsers: [{ name: '帅猫', phone: 17826855166, gender: '男', email: 'chwangchuhan@163.com' }],
+    candidateUsers: this.props.candidateUsers,
   }
 
   handleSubmit = () => {
@@ -90,7 +89,7 @@ export default class SelectCandidate extends Component {
 
         {/* 提交按钮 */}
         {!!candidateUsers.length && (
-          <div className="btn-wrap">
+          <div className="operation-wrap">
             <div className="btn-submit" onClick={this.handleSubmit}>
               确认提交
             </div>
