@@ -4,24 +4,15 @@ import { connect, router } from 'dva';
 // import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Result, Button, Spin, Modal, Typography, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
+import SelectGoodsMeals from './container/select-goods-meals'
 import SelectFreedom from './container/select-freedom'
 import SelectCandidate from './container/select-candidate'
 import PreviewCandidateList from './container/preview-candidate-list'
+import TipButton from './components/tip-button'
 
 import './index.less';
 
 const { Link } = router
-
-class TipButton extends Component {
-  static propTypes = {
-    children: T.any,
-    onClick: T.func,
-  }
-
-  render() {
-    return <div className="tip-button" onClick={this.props.onClick}>{this.props.children}</div>
-  }
-}
 
 @connect(({ order, loading }) => ({
   order,
@@ -33,6 +24,7 @@ export default class Order extends Component {
     // 自由选中的商品
     freeSelectsGoods: [],
     candidateList: [{ name: '帅猫', phone: 17826855166, gender: '男', email: 'chwangchuhan@163.com' }],
+    currentMeal: null, // 当前选中的套餐
   }
 
   init = () => {
@@ -59,18 +51,18 @@ export default class Order extends Component {
     })
   }
 
-  // 设置当前订单套餐
-  handleSetMeal = currentMeal => {
-    this.props.dispatch({
-      type: 'order/setCurrentMeal',
-      payload: { currentMeal }
-    })
-  }
-
   // 自由选择商品选择成功
   handleSubmitFreedom = selectGoods => {
     this.setState({
       freeSelectsGoods: selectGoods,
+    })
+    this.handleSetStep(4)
+  }
+  
+  // 选择套餐选择成功
+  handleSubmitGoodsMeal = goodsMeal => {
+    this.setState({
+      currentMeal: goodsMeal,
     })
     this.handleSetStep(4)
   }
@@ -103,11 +95,17 @@ export default class Order extends Component {
         </div>
       ),
       onOk: async () => {
-        const { freeSelectsGoods, candidateList } = this.state
+        const { freeSelectsGoods, candidateList, currentMeal } = this.state
         const payload = { candidateList }
 
+        // 自由商品提交
         if (freeSelectsGoods.length) {
           payload.freeSelectsGoods = freeSelectsGoods
+        }
+
+        // 套餐提交
+        if (currentMeal) {
+          payload.mealId = currentMeal.id
         }
 
         message.loading({
@@ -135,7 +133,7 @@ export default class Order extends Component {
   render() {
     const { isLoadingBusinessInfo, isLoadingMeals, order } = this.props;
     const { step, businessInfo, goods, goodsMeals } = order
-    console.log(goods)
+    // console.log(goods)
 
     return (
       <div className="order-wrap">
@@ -172,18 +170,7 @@ export default class Order extends Component {
 
           {/* 选择套餐项目 */}
           {step === 3 && (
-            <div className="select-type" onClick={this.handleGoGoods}>
-              {goodsMeals.map(item => {
-                return (
-                  <TipButton
-                    key={item.id}
-                    onClick={() => { this.handleSetMeal(item) }}
-                  >
-                    {item.label}
-                  </TipButton>
-                )
-              })}
-            </div>
+            <SelectGoodsMeals goodsMeals={goodsMeals} onSubmit={this.handleSubmitGoodsMeal} />
           )}
 
           {/* 候选人基础信息 */}

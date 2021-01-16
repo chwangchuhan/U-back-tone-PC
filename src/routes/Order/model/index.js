@@ -21,7 +21,6 @@ export default {
     goods: [],        // 订单商品
     goodsMeals: [],   // 获取订单商品套餐
     businessInfo: {}, // 公司信息
-    currentMeal: {},  // 当前选中的meal
   },
 
   subscriptions: {},
@@ -36,7 +35,7 @@ export default {
       });
     },
 
-    // 获取订单商品列表
+    // 获取订单商品套餐列表
     *getOrderGoodsMeals({ payload }, { call, put }) {
       const res = yield getOrderGoodsMeal(payload);
       yield put({
@@ -48,6 +47,7 @@ export default {
 
     // 获取注册公司详情
     *getBusinessInfo({ payload }, { call, put }) {
+      yield put({ type: 'resetState' });
       const res = yield getBusinessInfo(payload);
       yield put({
         type: 'setBusinessInfo',
@@ -62,6 +62,16 @@ export default {
   },
 
   reducers: {
+    // 初始化所有状态
+    resetState(state) {
+      return {
+        step: -1,         
+        goods: [],        // 订单商品
+        goodsMeals: [],   // 获取订单商品套餐
+        businessInfo: {}, // 公司信息
+      }
+    },
+
     // 设置当前所处订单页状态
     setStep(state, { payload }) {
       return {
@@ -82,7 +92,7 @@ export default {
     setBusinessInfo(state, { payload }) {
       return {
         ...state,
-        step: 0,
+        step: 3,
         businessInfo: payload,
       }
     },
@@ -92,14 +102,6 @@ export default {
       return {
         ...state,
         goodsMeals: payload.meals
-      }
-    },
-
-    // 设置当前选中的套餐数据
-    setCurrentMeal(state, { payload }) {
-      return {
-        ...state,
-        currentMeal: payload.currentMeal
       }
     },
   }

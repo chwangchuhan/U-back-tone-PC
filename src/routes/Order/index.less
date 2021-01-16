@@ -28,7 +28,8 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    user-select: none;
+    box-shadow: 1px 1px 6px rgba(0,0,0,0.3);
     &::before {
       content: "";
       width: 10px;
@@ -182,6 +183,7 @@
           color: #00a0e9;
           font-size: 30px;
           margin-left: 8px;
+          text-decoration: line-through;
         }
       }
 
@@ -198,6 +200,78 @@
       }
     }
   }
+
+  
+  // 选择套餐商品
+  .select-goods-meals-submit-wrap {
+    .meal-items-table {
+      width: 80%;
+      margin: auto;
+    }
+
+    .report-time-wrap {
+      text-align: center;
+      font-size: 16px;
+    }
+    .meal-items-table {
+      margin-top: 20px;
+    }
+
+    .item-select-desc {
+      width: 80%;
+      color: #a9a9a9;
+      margin: 40px auto;
+      text-align: center;
+
+      .desc-title {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+    }
+
+    .price-result-wrap {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      .compose-price-wrap {
+        margin-right: 60px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+
+        .compose-price {
+          color: #00a0e9;
+          font-size: 30px;
+          margin-left: 8px;
+          text-decoration: line-through;
+        }
+      }
+
+      .real-price-wrap {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+
+        .real-price {
+          color: #fe7750;
+          font-size: 30px;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    .operation-wrap {
+      .btn-reset {
+        background-color: #fff;
+        color: #00a0e9;
+        border: 1px solid #00a0e9;
+        margin-right: 20px;
+      }
+    }
+  }
+
 
   // 提交按钮
   .operation-wrap {
@@ -398,5 +472,4 @@
     }
   }
 }
-
 
