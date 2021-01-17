@@ -446,5 +446,20 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
         message: '提交成功',
       }), 500);
     },
+
+    // 获取历史订单
+    'GET /api/order/history/list': (options) => {
+      return toSuccess(mock({
+        list: [
+          {
+            name: '候选人A',
+            status: 0, // 0 背调函待发送， 1 候选人待确认 2 背调人待确认 3背调已完成
+            typeStr: '自由组合',
+            updateTime: 1610905466935,
+          }
+        ]
+      }), 500);
+    },
+
   }
 }

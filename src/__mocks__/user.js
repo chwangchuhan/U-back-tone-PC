@@ -51,7 +51,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
           },
           {
             name: '订单',
-            path: '/order-history',
+            path: '/task-manager/order-history',
           }
         ],
       },
