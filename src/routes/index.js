@@ -64,7 +64,7 @@ const routesConfig = app => [
     path: '/',
     title: '系统中心',
     component: BasicLayout,
-    indexRoute: '/dashboard',
+    indexRoute: '/task-manager/order',
     childRoutes: [
       Dashboard(app),
       Order(app),

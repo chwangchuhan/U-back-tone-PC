@@ -92,7 +92,7 @@ export default {
     setBusinessInfo(state, { payload }) {
       return {
         ...state,
-        step: 3,
+        step: 0,
         businessInfo: payload,
       }
     },
