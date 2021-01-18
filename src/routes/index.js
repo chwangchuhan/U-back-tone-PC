@@ -38,6 +38,7 @@ import Image from './UI/Image';
 
 import Order from './Order' // 下单页面
 import OrderHistory from './Order-History' // 订单历史
+import ReportList from './Report-List'
 
 /**
  * 主路由配置
@@ -69,6 +70,7 @@ const routesConfig = app => [
     childRoutes: [
       Order(app),
       OrderHistory(app),
+      ReportList(app),
       Dashboard(app),
       Blank(app),
       Toolbar(app),

@@ -58,7 +58,7 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
       {
         name: '报告管理',
         icon: 'SearchOutlined',
-        path: '/report-manager',
+        path: '/report-manager/list',
       },
       {
         name: '账单管理',

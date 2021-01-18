@@ -22,12 +22,7 @@ const ORDER_STATUS_MAP = {
   isLoadingOrders: loading.effects['orderHistory/getOrderHistory'],
 }))
 export default class OrderHistory extends Component {
-  state = {
-    // 自由选中的商品
-    freeSelectsGoods: [],
-    candidateList: [{ name: '帅猫', phone: 17826855166, gender: '男', email: 'chwangchuhan@163.com' }],
-    currentMeal: null, // 当前选中的套餐
-  }
+  state = {}
 
   init = () => {
     const { dispatch } = this.props;
