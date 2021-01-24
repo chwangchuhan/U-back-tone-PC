@@ -1,45 +1,46 @@
 import { createRoutes } from '@/utils/core';
 import BasicLayout from '@/layouts/BasicLayout';
 import UserLayout from '@/layouts/UserLayout';
-import Page403 from './Pages/403';
-import NotFound from './Pages/404';
-import Page500 from './Pages/500';
-import ScreenLock from './Widgets/ScreenLock';
-import Coming from './Widgets/Coming';
-import Gallery from './Widgets/Gallery';
-import Result from './Widgets/Result';
-import LevelRoute from './Widgets/LevelRoute';
+import Page403 from './template/Pages/403';
+import NotFound from './template/Pages/404';
+import Page500 from './template/Pages/500';
+import ScreenLock from './template/Widgets/ScreenLock';
+import Coming from './template/Widgets/Coming';
+import Gallery from './template/Widgets/Gallery';
+import Result from './template/Widgets/Result';
+import LevelRoute from './template/Widgets/LevelRoute';
+import Dashboard from './template/Dashboard';
+import Blank from './template/Blank';
+import Toolbar from './template/Widgets/Toolbar';
+import BaseComponent from './template/Widgets/BaseComponent';
+import Column from './template/Widgets/Column';
+import TransferTree from './template/Widgets/TransferTree';
+import SearchBar from './template/Widgets/SearchBar';
+import DataTable from './template/Widgets/DataTable';
+import Form from './template/Widgets/Form';
+import EC from './template/Widgets/Charts/EC';
+import G2 from './template/Widgets/Charts/G2';
+import Print from './template/Widgets/Print';
+import Banner from './template/Widgets/Banner';
+import Icon from './template/UI/Icon';
+import Mask from './template/UI/Mask';
+import Editor from './template/UI/Editor';
+import CSSAnimate from './template/UI/CSSAnimate';
+import Alerts from './template/UI/Alerts';
+import Button from './template/UI/Button';
+import Modal from './template/UI/Modal';
+import CRUD from './template/Business/CRUD';
+import CRUDDetail from './template/Business/CRUD/routers/Detail';
+import Image from './template/UI/Image';
+
 import Login from './Login';
 import Register from './Register';
-import Verify from './Verify'
-import Dashboard from './Dashboard';
-import Blank from './Blank';
-import Toolbar from './Widgets/Toolbar';
-import BaseComponent from './Widgets/BaseComponent';
-import Column from './Widgets/Column';
-import TransferTree from './Widgets/TransferTree';
-import SearchBar from './Widgets/SearchBar';
-import DataTable from './Widgets/DataTable';
-import Form from './Widgets/Form';
-import EC from './Widgets/Charts/EC';
-import G2 from './Widgets/Charts/G2';
-import Print from './Widgets/Print';
-import Banner from './Widgets/Banner';
-import Icon from './UI/Icon';
-import Mask from './UI/Mask';
-import Editor from './UI/Editor';
-import CSSAnimate from './UI/CSSAnimate';
-import Alerts from './UI/Alerts';
-import Button from './UI/Button';
-import Modal from './UI/Modal';
-import CRUD from './Business/CRUD';
-import CRUDDetail from './Business/CRUD/routers/Detail';
-import Image from './UI/Image';
-
+import Verify from './Verify' // 验证
 import Order from './Order' // 下单页面
 import OrderHistory from './Order-History' // 订单历史
 import ReportList from './Report-List' // 报告列表
 import ReportInfo from './Report-Info' // 详细报告
+
 
 /**
  * 主路由配置
