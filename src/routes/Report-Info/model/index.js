@@ -3,7 +3,7 @@ import { getRpeortList } from '../service';
 // import $$ from 'cmn-utils';
 
 export default {
-  namespace: 'report',
+  namespace: 'reportInfo',
 
   state: {
     list: [], // 报告列表
