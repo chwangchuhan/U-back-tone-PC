@@ -67,15 +67,15 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
         children: [
           {
             name: '本月账单',
-            path: '/month-bill',
+            path: '/bill-manager/month-bill',
           },
           {
             name: '待付订单',
-            path: '/pay-bill',
+            path: '/bill-manager/pay-bill',
           },
           {
             name: '历史账单',
-            path: '/history-bill'
+            path: '/bill-manager/history-bill'
           }
         ],
       },

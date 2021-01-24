@@ -40,6 +40,7 @@ import Order from './Order' // 下单页面
 import OrderHistory from './Order-History' // 订单历史
 import ReportList from './Report-List' // 报告列表
 import ReportInfo from './Report-Info' // 详细报告
+import MonthBill from './Bill/Month-Bill'
 
 
 /**
@@ -66,7 +67,7 @@ const routesConfig = app => [
   },
   {
     path: '/',
-    title: '系统中心',
+    title: '主页面',
     component: BasicLayout,
     indexRoute: '/task-manager/order',
     childRoutes: [
@@ -74,6 +75,7 @@ const routesConfig = app => [
       OrderHistory(app),
       ReportList(app),
       ReportInfo(app),
+      MonthBill(app),
 
       Dashboard(app),
       Blank(app),

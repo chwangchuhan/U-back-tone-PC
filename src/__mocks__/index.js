@@ -9,6 +9,7 @@ import formData from './form';
 import business from './business'
 import order from './order'
 import report from './report'
+import bill from './bill'
 
 /**
  * 加载mock文件
@@ -24,4 +25,5 @@ packMock(
   business,
   order,
   report,
+  bill,
 );
