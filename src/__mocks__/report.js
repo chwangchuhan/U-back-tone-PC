@@ -10,7 +10,6 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
   return {
     // 获取报告数据
     '/api/report/list': (options) => {
-      debugger
       const body = JSON.parse(options.body || '{}')
       const list = [
         {

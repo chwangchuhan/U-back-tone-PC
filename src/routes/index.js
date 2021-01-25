@@ -42,6 +42,7 @@ import ReportList from './Report-List' // 报告列表
 import ReportInfo from './Report-Info' // 详细报告
 import MonthBill from './Bill/Month-Bill' // 月账单
 import PayBill from './Bill/Pay-Bill' // 待付账单
+import HistoryBill from './Bill/History-Bill' // 待付账单
 
 
 /**
@@ -78,38 +79,39 @@ const routesConfig = app => [
       ReportInfo(app),
       MonthBill(app),
       PayBill(app),
+      HistoryBill(app),
 
-      Dashboard(app),
-      Blank(app),
-      Toolbar(app),
-      Column(),
-      SearchBar(),
-      EC(app),
-      G2(app),
-      Icon(),
-      Mask(),
-      Editor(),
-      CSSAnimate(),
-      Alerts(),
-      Button(),
-      Modal(),
-      DataTable(app),
-      Form(app),
-      TransferTree(app),
-      BaseComponent(),
-      CRUD(app),
-      CRUDDetail(app),
-      Coming(),
-      ScreenLock(),
-      Gallery(),
-      Result(),
-      Page403(),
-      Page500(),
-      Print(),
-      Banner(app),
-      LevelRoute(app),
-      Image(),
-      NotFound()
+      // Dashboard(app),
+      // Blank(app),
+      // Toolbar(app),
+      // Column(),
+      // SearchBar(),
+      // EC(app),
+      // G2(app),
+      // Icon(),
+      // Mask(),
+      // Editor(),
+      // CSSAnimate(),
+      // Alerts(),
+      // Button(),
+      // Modal(),
+      // DataTable(app),
+      // Form(app),
+      // TransferTree(app),
+      // BaseComponent(),
+      // CRUD(app),
+      // CRUDDetail(app),
+      // Coming(),
+      // ScreenLock(),
+      // Gallery(),
+      // Result(),
+      // Page403(),
+      // Page500(),
+      // Print(),
+      // Banner(app),
+      // LevelRoute(app),
+      // Image(),
+      // NotFound()
     ]
   }
 ];

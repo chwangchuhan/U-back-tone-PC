@@ -90,9 +90,10 @@ export default class BillMonthList extends Component {
     const { step, isAgreeBill, isMonthBill } = this.state
     const {  list } = billList
 
+    console.log(isLoadingList, isLoadingMonthList)
     return (
       <div className="pay-bill-wrap">
-        <Spin spinning={isLoadingList || isLoadingMonthList}>
+        <Spin spinning={isMonthBill ? isLoadingMonthList : isLoadingList}>
           <Row style={{ marginBottom: '20px' }} justify="space-between">
             <Title level={4}>{isMonthBill ? '本月账单' : '待付账单'}</Title>
           </Row>

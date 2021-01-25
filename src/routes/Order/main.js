@@ -195,7 +195,7 @@ export default class Order extends Component {
                 subTitle={`邮件已发送给候选人：${this.state.candidateList.map(item => item.name).join('、')}`}
                 extra={[
                   <Button type="primary" key="console">
-                    <Link to="/sign/register">立即查看订单</Link>
+                    <Link to="order-history">立即查看订单</Link>
                   </Button>,
                 ]}
               />

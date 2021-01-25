@@ -97,7 +97,7 @@ export default class Verify extends Component {
                   </Upload>
                   <div className="upload-tip">说明：请上传营业执照复印件并加盖公章</div>
                 </div>
-                <div className="btn-operation-wrap">
+                <div className="operation-wrap">
                   <Space size="large">
                     <Button
                       type="primary"

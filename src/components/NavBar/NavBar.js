@@ -97,18 +97,18 @@ class NavBar extends PureComponent {
           </span>
         </div>
         <ul className="nav navbar-nav navbar-left clearfix">
-          {collapsed || isMobile ? null : (
+          {/* {collapsed || isMobile ? null : (
             <li>
               <a className="sidebar-menu-toggle" onClick={toggleSidebarHeader}>
                 <Icon type="ruby" />
               </a>
             </li>
-          )}
-          <li>
+          )} */}
+          {/* <li>
             <a onClick={onExpandTopBar}>
               <Icon type="wand" />
             </a>
-          </li>
+          </li> */}
           {isMobile ? (
             <li className="mini-search" onClick={this.onOpenSearchBox}>
               <a>
@@ -123,7 +123,7 @@ class NavBar extends PureComponent {
             </li>
           )}
         </ul>
-        {isMobile ? null : (
+        {/* {isMobile ? null : (
           <form className="navbar-form navbar-search clearfix">
             <div className="form-group">
               <input
@@ -134,7 +134,7 @@ class NavBar extends PureComponent {
               />
             </div>
           </form>
-        )}
+        )} */}
         <ul className="nav navbar-nav navbar-right clearfix">
           {/* <li>
             <a href="https://github.com/LANIF-UI/dva-boot-admin">
