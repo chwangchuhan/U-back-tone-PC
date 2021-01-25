@@ -40,7 +40,8 @@ import Order from './Order' // 下单页面
 import OrderHistory from './Order-History' // 订单历史
 import ReportList from './Report-List' // 报告列表
 import ReportInfo from './Report-Info' // 详细报告
-import MonthBill from './Bill/Month-Bill'
+import MonthBill from './Bill/Month-Bill' // 月账单
+import PayBill from './Bill/Pay-Bill' // 待付账单
 
 
 /**
@@ -76,6 +77,7 @@ const routesConfig = app => [
       ReportList(app),
       ReportInfo(app),
       MonthBill(app),
+      PayBill(app),
 
       Dashboard(app),
       Blank(app),

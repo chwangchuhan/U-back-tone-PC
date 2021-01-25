@@ -10,7 +10,6 @@ export default ({fetchMock, delay, mock, toSuccess, toError}) => {
   return {
     // 获取历史订单
     'GET /api/bill/month/list': (options) => {
-      debugger
       return toSuccess(mock({
         list: [
           {

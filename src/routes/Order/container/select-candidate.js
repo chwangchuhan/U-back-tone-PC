@@ -77,7 +77,7 @@ export default class SelectCandidate extends Component {
         })}
 
         <ModalAddCandidate onSubmit={this.handleAddCandidateUser}>
-          <div className="btn-add-candidate-user">
+          <div className="add-candidate-user">
             <div className="add-user-content">
               <div className="add-icon">
                 <PlusOutlined />
